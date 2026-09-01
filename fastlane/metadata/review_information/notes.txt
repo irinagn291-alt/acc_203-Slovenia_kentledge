@@ -1,0 +1,13 @@
+The build settings declare NSCameraUsageDescription as "This app does not use the camera." The Ledger, Insights, and Settings never request camera access, so that prompt does not appear in this flow. No other permission usage strings are present. Local reminder is a stored hour on Ballast; the app does not request notification permission.
+
+There is no login, no in-app purchase, no user-generated content, no account deletion flow, and no App Tracking Transparency prompt.
+
+Kentledge is a Finance Ledger for people who want this month's subscription load and to see what a cancel funds as seated credit. A cut is two-phase: jettison prepares a ghosted brick and a loose credit; seating on a keep or a named sink commits.
+
+No credentials or demo account are needed. A cold launch opens the Ledger with Monthly load and Cancel-savings. If onboarding is incomplete, four pages appear: This month's load, Jettison a brick, A cut must seat, and Cancel-savings on the beam; Next, Skip, or Open the beam continues. Settings Re-run onboarding shows those pages again. From the Ledger header, open Insights or Settings. If the beam is empty, Stand a brick, enter Name, Amount, Period, and Next charge, then Stand. Tap Jettison on a post or drag it off the beam, then Seat on keep or Seat on sink, or Name a sink. Abandon restores the brick. Insights lists What a cut would free.
+
+On launch the app POSTs the bundle identifier and an empty push token to https://kentledge-beam.pro/api/v1/users/register. Settings Contact Kentledge opens https://kentledge-beam.pro/contact-us. The Ledger does not fetch a remote catalog. Charge bricks, credits, keeps, sinks, and ballast stay on device in UserDefaults key ktl.beam.v1 and in Application Support as beam.json. A content URL returned by register, if any, may be loaded in a WebView; otherwise the native Ledger is shown.
+
+Behaviour does not differ by region. Currency defaults to USD until Ballast is written. Amounts and dates follow the device locale.
+
+No licence or regulated-industry paperwork applies. The app does not link a bank, process payments, or give licensed financial advice.

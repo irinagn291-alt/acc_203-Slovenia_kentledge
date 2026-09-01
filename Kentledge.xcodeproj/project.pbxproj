@@ -1,0 +1,770 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		02084AEC13248DA0D0F8BD87 /* BeamStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12158AE27683B07AF542E761 /* BeamStoreTests.swift */; };
+		040DB93E197E339254324785 /* HullChrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483324DD1BE038591BCC33F3 /* HullChrome.swift */; };
+		16DE0CB2FCEBAE76B22CE2B9 /* SeatCreditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3CFE62849B92C82BD925E1 /* SeatCreditView.swift */; };
+		185C05A19BFBA807AC63E362 /* ChargePeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B89AF256E5D456713074BE /* ChargePeriod.swift */; };
+		190B49BC0C938DA6ECD9BD90 /* SinkRail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E57D3C4C8683B23CA7A80A8 /* SinkRail.swift */; };
+		1916ABAB2CE2B8770AE5A95C /* BeamWatchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D848CEA4EC176A133AEA509 /* BeamWatchTests.swift */; };
+		20472D9D98563B1AE285D211 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408F6E649EB852DDA0A7D2F0 /* OnboardingView.swift */; };
+		216F6AD5FB4BD96B8D9A7BF1 /* HullSwatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6908A7BC0B39E317DAF803 /* HullSwatch.swift */; };
+		244BB7D71C6BEDE4B78BEA95 /* ScreenShotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97446E684F3CB4DC51A0E79 /* ScreenShotTests.swift */; };
+		25CF57895F7AC13C2EA7E886 /* HoldBeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57173943749005072DFA07A4 /* HoldBeam.swift */; };
+		2AA4BA0F1839ED29569AA8B6 /* LoadBeamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A3BA9FB80368FA7BF4F1C2 /* LoadBeamTests.swift */; };
+		3597DADFCC9624A01EF09746 /* BeamStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125B8C88BB3CAE699F0A4CD6 /* BeamStore.swift */; };
+		3F84FE77F77AB6104FD13BA9 /* InsightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189A9979FF82C192B94C4B68 /* InsightsView.swift */; };
+		536C913B37AE1B083AC15315 /* KentledgeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF966996373A41207FFB13A4 /* KentledgeTests.swift */; };
+		64001F7DB3472D3526A9C36B /* BeamSeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91E776CAE5554B9E7FB7C46 /* BeamSeed.swift */; };
+		679881A4815E526CB7DFB260 /* LoadPlate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFA60342E405ED07AB282D0 /* LoadPlate.swift */; };
+		74472464F03A58807A2A8908 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726CCE9F7297DBA42C3F4FEC /* AppDelegate.swift */; };
+		750674876986565618CFE9FE /* Keep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AE1F7F1AFE0276F86F9B93 /* Keep.swift */; };
+		7892F85852FE2C47E16C2F4E /* BeamLedger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532C4120373A5199C04ACDE2 /* BeamLedger.swift */; };
+		7B6AFF44CB37D3C39FC87EB0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A7DC744D021596A94DC31C /* ContentView.swift */; };
+		83F756C805ED273ADFD0A590 /* NamedSink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF9157EB6B1437E4EB46259 /* NamedSink.swift */; };
+		9CCB133DCA72D253300C2ABF /* BeamReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505D7DF07CF4AF93E5F0FC88 /* BeamReview.swift */; };
+		9F57281DB1EEB0B1F6ACA3E9 /* SeatCredit.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC8934B11E665D06F1C8204 /* SeatCredit.swift */; };
+		A188EB9F25DC0C681961D459 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A080A8FFEA8CF7133F8D09E /* Assets.xcassets */; };
+		A4A7722DDBF33ADC581F000F /* ChargeBrick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971AA1B46AA30204CFD4FFD7 /* ChargeBrick.swift */; };
+		ADCE5173EFAFDB3F584A35B4 /* APIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4821D2E2A983039504D3E9 /* APIConfig.swift */; };
+		B4D406083AE7F643216EED4F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1417F7F6CA53160D9EB1F0 /* SettingsView.swift */; };
+		BDF5C6810B7B078064FE05D5 /* ScreenCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35CB73ED248065D1A235BE9 /* ScreenCatalog.swift */; };
+		C3D71D96567D0CD4E5BECA2B /* BeamClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1E304A126145F58D53EC4B /* BeamClientTests.swift */; };
+		D0F3BA5FCB9F69DCA0C5CEC8 /* LedgerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDBB822B1DF20E3F31FEF3B /* LedgerView.swift */; };
+		D16E3E723815150DD1F42000 /* BeamClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93B9ADDA1C0C690C7C62384 /* BeamClient.swift */; };
+		EBB218EE97A7E95A9D9C3785 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = D1EF1433999D519F87713822 /* Alamofire */; };
+		EBEF8CC1E88B2CC942922AD7 /* PlateFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD7EBE985BB06DDE3CE5FE9 /* PlateFrame.swift */; };
+		F122078194D6AFD93006BC3F /* KentledgeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CBF42E24FBE93AE4D1DA98 /* KentledgeApp.swift */; };
+		F429A1AFA14CE6EF4D767CE1 /* LoadBeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE1413B3F4B84A7BC3D456A /* LoadBeam.swift */; };
+		F89E5B97E3AA405CC790F183 /* BeamWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A82D909B5CBA31F5C7877A /* BeamWatch.swift */; };
+		FDC8583DB3C376431B324043 /* KeepRail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2119F6E2D03054BD5B98533D /* KeepRail.swift */; };
+		FF29503C6BB17525EFD38467 /* BrickDraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CD256E892B4E2629F8F9CD /* BrickDraft.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		94F96E94B7701DDB2B3B9270 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F5B6D94692C8DE83B668E539 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2FB9F388BE273EF039BEA944;
+			remoteInfo = Kentledge;
+		};
+		C3CA3BCA8FC3BEAC908D2AAB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F5B6D94692C8DE83B668E539 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2FB9F388BE273EF039BEA944;
+			remoteInfo = Kentledge;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		09A7DC744D021596A94DC31C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		12158AE27683B07AF542E761 /* BeamStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeamStoreTests.swift; sourceTree = "<group>"; };
+		125B8C88BB3CAE699F0A4CD6 /* BeamStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeamStore.swift; sourceTree = "<group>"; };
+		189A9979FF82C192B94C4B68 /* InsightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightsView.swift; sourceTree = "<group>"; };
+		1D848CEA4EC176A133AEA509 /* BeamWatchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeamWatchTests.swift; sourceTree = "<group>"; };
+		2119F6E2D03054BD5B98533D /* KeepRail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepRail.swift; sourceTree = "<group>"; };
+		2A1E304A126145F58D53EC4B /* BeamClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeamClientTests.swift; sourceTree = "<group>"; };
+		36CBF42E24FBE93AE4D1DA98 /* KentledgeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KentledgeApp.swift; sourceTree = "<group>"; };
+		3A080A8FFEA8CF7133F8D09E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		408F6E649EB852DDA0A7D2F0 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		46A82D909B5CBA31F5C7877A /* BeamWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeamWatch.swift; sourceTree = "<group>"; };
+		483324DD1BE038591BCC33F3 /* HullChrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HullChrome.swift; sourceTree = "<group>"; };
+		4CFA60342E405ED07AB282D0 /* LoadPlate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadPlate.swift; sourceTree = "<group>"; };
+		4FF9157EB6B1437E4EB46259 /* NamedSink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamedSink.swift; sourceTree = "<group>"; };
+		505D7DF07CF4AF93E5F0FC88 /* BeamReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeamReview.swift; sourceTree = "<group>"; };
+		5270AE8D05780B0A9DEBDB48 /* KentledgeTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = KentledgeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		532C4120373A5199C04ACDE2 /* BeamLedger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeamLedger.swift; sourceTree = "<group>"; };
+		57173943749005072DFA07A4 /* HoldBeam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoldBeam.swift; sourceTree = "<group>"; };
+		57CD256E892B4E2629F8F9CD /* BrickDraft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrickDraft.swift; sourceTree = "<group>"; };
+		5DD7EBE985BB06DDE3CE5FE9 /* PlateFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateFrame.swift; sourceTree = "<group>"; };
+		5E57D3C4C8683B23CA7A80A8 /* SinkRail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinkRail.swift; sourceTree = "<group>"; };
+		726CCE9F7297DBA42C3F4FEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		78AE1F7F1AFE0276F86F9B93 /* Keep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keep.swift; sourceTree = "<group>"; };
+		78B89AF256E5D456713074BE /* ChargePeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChargePeriod.swift; sourceTree = "<group>"; };
+		7AE1413B3F4B84A7BC3D456A /* LoadBeam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadBeam.swift; sourceTree = "<group>"; };
+		7B4821D2E2A983039504D3E9 /* APIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfig.swift; sourceTree = "<group>"; };
+		8D3CFE62849B92C82BD925E1 /* SeatCreditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatCreditView.swift; sourceTree = "<group>"; };
+		95F92F4FF0F4071E49CF8F65 /* Kentledge.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Kentledge.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		971AA1B46AA30204CFD4FFD7 /* ChargeBrick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChargeBrick.swift; sourceTree = "<group>"; };
+		9F1417F7F6CA53160D9EB1F0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A93B9ADDA1C0C690C7C62384 /* BeamClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeamClient.swift; sourceTree = "<group>"; };
+		B35CB73ED248065D1A235BE9 /* ScreenCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenCatalog.swift; sourceTree = "<group>"; };
+		BDC8934B11E665D06F1C8204 /* SeatCredit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatCredit.swift; sourceTree = "<group>"; };
+		D5A3BA9FB80368FA7BF4F1C2 /* LoadBeamTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadBeamTests.swift; sourceTree = "<group>"; };
+		D700E7C01A8F1E5EC0684FF7 /* KentledgeShotTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = KentledgeShotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E91E776CAE5554B9E7FB7C46 /* BeamSeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeamSeed.swift; sourceTree = "<group>"; };
+		EDDBB822B1DF20E3F31FEF3B /* LedgerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LedgerView.swift; sourceTree = "<group>"; };
+		EF966996373A41207FFB13A4 /* KentledgeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KentledgeTests.swift; sourceTree = "<group>"; };
+		F97446E684F3CB4DC51A0E79 /* ScreenShotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenShotTests.swift; sourceTree = "<group>"; };
+		FD6908A7BC0B39E317DAF803 /* HullSwatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HullSwatch.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		56E0D8AE1001E959F1356E6F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBB218EE97A7E95A9D9C3785 /* Alamofire in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0BD45713F986DACE56BC20BE /* Keep */ = {
+			isa = PBXGroup;
+			children = (
+				78AE1F7F1AFE0276F86F9B93 /* Keep.swift */,
+				2119F6E2D03054BD5B98533D /* KeepRail.swift */,
+			);
+			path = Keep;
+			sourceTree = "<group>";
+		};
+		0E748BB34FD67A1261F4A595 /* Brick */ = {
+			isa = PBXGroup;
+			children = (
+				57CD256E892B4E2629F8F9CD /* BrickDraft.swift */,
+				971AA1B46AA30204CFD4FFD7 /* ChargeBrick.swift */,
+				78B89AF256E5D456713074BE /* ChargePeriod.swift */,
+				189A9979FF82C192B94C4B68 /* InsightsView.swift */,
+			);
+			path = Brick;
+			sourceTree = "<group>";
+		};
+		16EE13DFD9AC41305BFA4336 /* Kentledge */ = {
+			isa = PBXGroup;
+			children = (
+				7B4821D2E2A983039504D3E9 /* APIConfig.swift */,
+				726CCE9F7297DBA42C3F4FEC /* AppDelegate.swift */,
+				3A080A8FFEA8CF7133F8D09E /* Assets.xcassets */,
+				09A7DC744D021596A94DC31C /* ContentView.swift */,
+				36CBF42E24FBE93AE4D1DA98 /* KentledgeApp.swift */,
+				E20E03CD72B63284B6D78278 /* Beam */,
+				0E748BB34FD67A1261F4A595 /* Brick */,
+				C5514FA7A6D0168833634119 /* Credit */,
+				0BD45713F986DACE56BC20BE /* Keep */,
+				F39D3D35098793AB00A82F98 /* Sink */,
+			);
+			path = Kentledge;
+			sourceTree = "<group>";
+		};
+		88C568A7D4EDD6F1074583D9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				95F92F4FF0F4071E49CF8F65 /* Kentledge.app */,
+				D700E7C01A8F1E5EC0684FF7 /* KentledgeShotTests.xctest */,
+				5270AE8D05780B0A9DEBDB48 /* KentledgeTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		989320D533974BA1EB2D2E2E = {
+			isa = PBXGroup;
+			children = (
+				16EE13DFD9AC41305BFA4336 /* Kentledge */,
+				D161743929EC61CE2B99FCD9 /* KentledgeShotTests */,
+				FE6F10AF777E524CB092336B /* KentledgeTests */,
+				88C568A7D4EDD6F1074583D9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C5514FA7A6D0168833634119 /* Credit */ = {
+			isa = PBXGroup;
+			children = (
+				BDC8934B11E665D06F1C8204 /* SeatCredit.swift */,
+				8D3CFE62849B92C82BD925E1 /* SeatCreditView.swift */,
+			);
+			path = Credit;
+			sourceTree = "<group>";
+		};
+		D161743929EC61CE2B99FCD9 /* KentledgeShotTests */ = {
+			isa = PBXGroup;
+			children = (
+				B35CB73ED248065D1A235BE9 /* ScreenCatalog.swift */,
+				F97446E684F3CB4DC51A0E79 /* ScreenShotTests.swift */,
+			);
+			path = KentledgeShotTests;
+			sourceTree = "<group>";
+		};
+		E20E03CD72B63284B6D78278 /* Beam */ = {
+			isa = PBXGroup;
+			children = (
+				A93B9ADDA1C0C690C7C62384 /* BeamClient.swift */,
+				532C4120373A5199C04ACDE2 /* BeamLedger.swift */,
+				505D7DF07CF4AF93E5F0FC88 /* BeamReview.swift */,
+				E91E776CAE5554B9E7FB7C46 /* BeamSeed.swift */,
+				125B8C88BB3CAE699F0A4CD6 /* BeamStore.swift */,
+				46A82D909B5CBA31F5C7877A /* BeamWatch.swift */,
+				57173943749005072DFA07A4 /* HoldBeam.swift */,
+				483324DD1BE038591BCC33F3 /* HullChrome.swift */,
+				FD6908A7BC0B39E317DAF803 /* HullSwatch.swift */,
+				EDDBB822B1DF20E3F31FEF3B /* LedgerView.swift */,
+				7AE1413B3F4B84A7BC3D456A /* LoadBeam.swift */,
+				4CFA60342E405ED07AB282D0 /* LoadPlate.swift */,
+				408F6E649EB852DDA0A7D2F0 /* OnboardingView.swift */,
+				5DD7EBE985BB06DDE3CE5FE9 /* PlateFrame.swift */,
+				9F1417F7F6CA53160D9EB1F0 /* SettingsView.swift */,
+			);
+			path = Beam;
+			sourceTree = "<group>";
+		};
+		F39D3D35098793AB00A82F98 /* Sink */ = {
+			isa = PBXGroup;
+			children = (
+				4FF9157EB6B1437E4EB46259 /* NamedSink.swift */,
+				5E57D3C4C8683B23CA7A80A8 /* SinkRail.swift */,
+			);
+			path = Sink;
+			sourceTree = "<group>";
+		};
+		FE6F10AF777E524CB092336B /* KentledgeTests */ = {
+			isa = PBXGroup;
+			children = (
+				2A1E304A126145F58D53EC4B /* BeamClientTests.swift */,
+				12158AE27683B07AF542E761 /* BeamStoreTests.swift */,
+				1D848CEA4EC176A133AEA509 /* BeamWatchTests.swift */,
+				EF966996373A41207FFB13A4 /* KentledgeTests.swift */,
+				D5A3BA9FB80368FA7BF4F1C2 /* LoadBeamTests.swift */,
+			);
+			path = KentledgeTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2FB9F388BE273EF039BEA944 /* Kentledge */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FCC712A3D742924E7FC7D42B /* Build configuration list for PBXNativeTarget "Kentledge" */;
+			buildPhases = (
+				5FD1C3376D2F724274A16FE3 /* Sources */,
+				EAA8A67F0D5C021CCF78C638 /* Resources */,
+				56E0D8AE1001E959F1356E6F /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Kentledge;
+			packageProductDependencies = (
+				D1EF1433999D519F87713822 /* Alamofire */,
+			);
+			productName = Kentledge;
+			productReference = 95F92F4FF0F4071E49CF8F65 /* Kentledge.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6BB0F388551E5C2808A78924 /* KentledgeShotTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F138A1061C678F599A3E3721 /* Build configuration list for PBXNativeTarget "KentledgeShotTests" */;
+			buildPhases = (
+				D9D1349864814821403345D9 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				997588B3C132C4491F4CE5F6 /* PBXTargetDependency */,
+			);
+			name = KentledgeShotTests;
+			packageProductDependencies = (
+			);
+			productName = KentledgeShotTests;
+			productReference = D700E7C01A8F1E5EC0684FF7 /* KentledgeShotTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		8F6A5B4B5A8BC2D5A7EA1776 /* KentledgeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9737CD7717603D173FF19B3A /* Build configuration list for PBXNativeTarget "KentledgeTests" */;
+			buildPhases = (
+				91FF62C23AB6CF4FADE9BF30 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6AF4EBC4D164AB6DD07FCF79 /* PBXTargetDependency */,
+			);
+			name = KentledgeTests;
+			packageProductDependencies = (
+			);
+			productName = KentledgeTests;
+			productReference = 5270AE8D05780B0A9DEBDB48 /* KentledgeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F5B6D94692C8DE83B668E539 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					2FB9F388BE273EF039BEA944 = {
+						ProvisioningStyle = Automatic;
+					};
+					6BB0F388551E5C2808A78924 = {
+						ProvisioningStyle = Automatic;
+					};
+					8F6A5B4B5A8BC2D5A7EA1776 = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = FB4265A42C64FBBA5BDEB779 /* Build configuration list for PBXProject "Kentledge" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 989320D533974BA1EB2D2E2E;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				0D2B57DD7A7627D6EC8D8308 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 88C568A7D4EDD6F1074583D9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2FB9F388BE273EF039BEA944 /* Kentledge */,
+				8F6A5B4B5A8BC2D5A7EA1776 /* KentledgeTests */,
+				6BB0F388551E5C2808A78924 /* KentledgeShotTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EAA8A67F0D5C021CCF78C638 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A188EB9F25DC0C681961D459 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5FD1C3376D2F724274A16FE3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADCE5173EFAFDB3F584A35B4 /* APIConfig.swift in Sources */,
+				74472464F03A58807A2A8908 /* AppDelegate.swift in Sources */,
+				D16E3E723815150DD1F42000 /* BeamClient.swift in Sources */,
+				7892F85852FE2C47E16C2F4E /* BeamLedger.swift in Sources */,
+				9CCB133DCA72D253300C2ABF /* BeamReview.swift in Sources */,
+				64001F7DB3472D3526A9C36B /* BeamSeed.swift in Sources */,
+				3597DADFCC9624A01EF09746 /* BeamStore.swift in Sources */,
+				F89E5B97E3AA405CC790F183 /* BeamWatch.swift in Sources */,
+				FF29503C6BB17525EFD38467 /* BrickDraft.swift in Sources */,
+				A4A7722DDBF33ADC581F000F /* ChargeBrick.swift in Sources */,
+				185C05A19BFBA807AC63E362 /* ChargePeriod.swift in Sources */,
+				7B6AFF44CB37D3C39FC87EB0 /* ContentView.swift in Sources */,
+				25CF57895F7AC13C2EA7E886 /* HoldBeam.swift in Sources */,
+				040DB93E197E339254324785 /* HullChrome.swift in Sources */,
+				216F6AD5FB4BD96B8D9A7BF1 /* HullSwatch.swift in Sources */,
+				3F84FE77F77AB6104FD13BA9 /* InsightsView.swift in Sources */,
+				750674876986565618CFE9FE /* Keep.swift in Sources */,
+				FDC8583DB3C376431B324043 /* KeepRail.swift in Sources */,
+				F122078194D6AFD93006BC3F /* KentledgeApp.swift in Sources */,
+				D0F3BA5FCB9F69DCA0C5CEC8 /* LedgerView.swift in Sources */,
+				F429A1AFA14CE6EF4D767CE1 /* LoadBeam.swift in Sources */,
+				679881A4815E526CB7DFB260 /* LoadPlate.swift in Sources */,
+				83F756C805ED273ADFD0A590 /* NamedSink.swift in Sources */,
+				20472D9D98563B1AE285D211 /* OnboardingView.swift in Sources */,
+				EBEF8CC1E88B2CC942922AD7 /* PlateFrame.swift in Sources */,
+				9F57281DB1EEB0B1F6ACA3E9 /* SeatCredit.swift in Sources */,
+				16DE0CB2FCEBAE76B22CE2B9 /* SeatCreditView.swift in Sources */,
+				B4D406083AE7F643216EED4F /* SettingsView.swift in Sources */,
+				190B49BC0C938DA6ECD9BD90 /* SinkRail.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		91FF62C23AB6CF4FADE9BF30 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3D71D96567D0CD4E5BECA2B /* BeamClientTests.swift in Sources */,
+				02084AEC13248DA0D0F8BD87 /* BeamStoreTests.swift in Sources */,
+				1916ABAB2CE2B8770AE5A95C /* BeamWatchTests.swift in Sources */,
+				536C913B37AE1B083AC15315 /* KentledgeTests.swift in Sources */,
+				2AA4BA0F1839ED29569AA8B6 /* LoadBeamTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9D1349864814821403345D9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDF5C6810B7B078064FE05D5 /* ScreenCatalog.swift in Sources */,
+				244BB7D71C6BEDE4B78BEA95 /* ScreenShotTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6AF4EBC4D164AB6DD07FCF79 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2FB9F388BE273EF039BEA944 /* Kentledge */;
+			targetProxy = C3CA3BCA8FC3BEAC908D2AAB /* PBXContainerItemProxy */;
+		};
+		997588B3C132C4491F4CE5F6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2FB9F388BE273EF039BEA944 /* Kentledge */;
+			targetProxy = 94F96E94B7701DDB2B3B9270 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		41E201921190F32C84017851 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOLS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Kentledge;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app does not use the camera.";
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_UIColorName = background;
+				INFOPLIST_KEY_UILaunchScreen_UIImageName = ktl_Splash;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kentledge.beam;
+				PRODUCT_NAME = Kentledge;
+				SDKROOT = iphoneos;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		50A06E44E0A40F691F179999 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kentledge.beam.tests.shots;
+				SDKROOT = iphoneos;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kentledge.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Kentledge";
+			};
+			name = Debug;
+		};
+		89ADB31E5344EB31C0A86666 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kentledge.beam.tests;
+				SDKROOT = iphoneos;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kentledge.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Kentledge";
+			};
+			name = Release;
+		};
+		B134B980D8CD64D7D0F54BE8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kentledge.beam.tests;
+				SDKROOT = iphoneos;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kentledge.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Kentledge";
+			};
+			name = Debug;
+		};
+		C2D67D812D8642C8575A4EAF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOLS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.2;
+			};
+			name = Debug;
+		};
+		CD75A7868777D1604FDAF8F7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOLS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Kentledge;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app does not use the camera.";
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_UIColorName = background;
+				INFOPLIST_KEY_UILaunchScreen_UIImageName = ktl_Splash;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kentledge.beam;
+				PRODUCT_NAME = Kentledge;
+				SDKROOT = iphoneos;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E0B44D3D8FB66FDEA1FD7537 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOLS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.2;
+			};
+			name = Release;
+		};
+		F5DBB3687459735FC76989AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kentledge.beam.tests.shots;
+				SDKROOT = iphoneos;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kentledge.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Kentledge";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9737CD7717603D173FF19B3A /* Build configuration list for PBXNativeTarget "KentledgeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B134B980D8CD64D7D0F54BE8 /* Debug */,
+				89ADB31E5344EB31C0A86666 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		F138A1061C678F599A3E3721 /* Build configuration list for PBXNativeTarget "KentledgeShotTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50A06E44E0A40F691F179999 /* Debug */,
+				F5DBB3687459735FC76989AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		FB4265A42C64FBBA5BDEB779 /* Build configuration list for PBXProject "Kentledge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2D67D812D8642C8575A4EAF /* Debug */,
+				E0B44D3D8FB66FDEA1FD7537 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		FCC712A3D742924E7FC7D42B /* Build configuration list for PBXNativeTarget "Kentledge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD75A7868777D1604FDAF8F7 /* Debug */,
+				41E201921190F32C84017851 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0D2B57DD7A7627D6EC8D8308 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/wrandecima-bit/Alamofire";
+			requirement = {
+				kind = revision;
+				revision = 7fdd403089757be2ce6991b287c7bef612c8bd04;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D1EF1433999D519F87713822 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0D2B57DD7A7627D6EC8D8308 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = F5B6D94692C8DE83B668E539 /* Project object */;
+}

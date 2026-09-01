@@ -1,0 +1,13 @@
+Kentledge is a personal Ledger for this month's subscription load. Charge bricks for the month that bills stand on the beam; a cut commits only when the freed credit seats on a keep or a named sink.
+
+• Ledger shows Monthly load and Cancel-savings
+• Stand a brick with Name, Amount, Period (None, Week, Month, Quarter, Year), and Next charge
+• True the post to edit a brick on the beam
+• Jettison a brick or drag a post off the beam; it ghosts and a credit equal to the monthly load appears
+• Seat on keep or Seat on sink; Name a sink; Abandon restores the brick
+• A mystery charge mark appears when Period is None or Next charge days collide
+• Insights ranks uncut bricks under What a cut would free
+• Settings Ballast stores Currency and Local reminder, plus Name sink, Re-run onboarding, Reset all data, and Contact Kentledge
+• Charge bricks, seated credits, keeps, sinks, and ballast stay on this device
+
+There is no account and no bank login. Seated credit on the beam is the cancel-savings.

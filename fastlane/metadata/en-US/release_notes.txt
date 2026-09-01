@@ -1,0 +1,7 @@
+Version 1.0 is the first public release.
+
+The Ledger shows Monthly load and Cancel-savings. Stand a brick to add Name, Amount, Period, and Next charge, or True the post to edit. Jettison a brick to prepare a cut; seat the credit on a keep or a named sink to commit, or Abandon to restore it. Insights ranks What a cut would free. Settings holds Ballast (Currency and Local reminder), sinks, Contact Kentledge, Re-run onboarding, and Reset all data.
+
+Onboarding pages cover This month's load, Jettison a brick, A cut must seat, and Cancel-savings on the beam.
+
+Charge bricks and ballast stay on the device.
