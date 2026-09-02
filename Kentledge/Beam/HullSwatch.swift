@@ -59,7 +59,7 @@ extension View {
             return AnyView(
                 base
                     .textCase(.uppercase)
-                    .tracking(1.4)
+                    .tracking(0.6)
                     .foregroundStyle(HullSwatch.muted)
             )
         case .load:
@@ -94,6 +94,21 @@ enum HullFigures {
         formatter.dateStyle = .medium
         formatter.timeStyle = .none
         return formatter.string(from: calendar.startOfDay(for: date))
+    }
+
+    static func shortDay(_ date: Date, calendar: Calendar = .current) -> String {
+        let formatter = DateFormatter()
+        formatter.calendar = calendar
+        formatter.locale = .current
+        formatter.setLocalizedDateFormatFromTemplate("MMMd")
+        return formatter.string(from: calendar.startOfDay(for: date))
+    }
+
+    static func percent(_ share: Double) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .percent
+        formatter.maximumFractionDigits = 0
+        return formatter.string(from: NSNumber(value: share)) ?? "—"
     }
 
     static func hour(_ hour: Int) -> String {

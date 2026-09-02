@@ -35,6 +35,7 @@ struct BeamLedger: Codable, Equatable, Sendable {
                 return CreditRecord(
                     id: credit.id,
                     brickID: credit.brickID,
+                    title: credit.title,
                     monthlyEquivalent: credit.monthlyEquivalent,
                     berthKind: kind,
                     berthID: berthID
@@ -75,6 +76,7 @@ struct BeamLedger: Codable, Equatable, Sendable {
                 return SeatCredit(
                     id: record.id,
                     brickID: record.brickID,
+                    title: record.title ?? "Cut charge",
                     monthlyEquivalent: record.monthlyEquivalent,
                     berth: berth
                 )
@@ -102,6 +104,7 @@ struct BrickRecord: Codable, Equatable, Sendable {
 struct CreditRecord: Codable, Equatable, Sendable {
     var id: UUID
     var brickID: UUID
+    var title: String?
     var monthlyEquivalent: Double
     var berthKind: String
     var berthID: UUID

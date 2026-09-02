@@ -9,10 +9,10 @@ struct SinkRail: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: HullSwatch.space(1)) {
-            Text("Sinks")
+            Text("Savings buckets")
                 .hullText(.stencil)
             if sinks.isEmpty {
-                Text("No named sink. Add one to seat a cut.")
+                Text("No savings name yet. Add one to place freed money.")
                     .hullText(.caption)
                     .foregroundStyle(HullSwatch.muted)
             } else {
@@ -20,7 +20,7 @@ struct SinkRail: View {
                     Button {
                         onSeat(sink.id)
                     } label: {
-                        Text("Seat on sink \(sink.name)")
+                        Text("Put in \(sink.name)")
                             .hullText(.body)
                             .lineLimit(2)
                             .minimumScaleFactor(0.6)
@@ -32,11 +32,11 @@ struct SinkRail: View {
                     }
                     .buttonStyle(.plain)
                     .disabled(!pending)
-                    .accessibilityLabel("Seat on sink \(sink.name)")
+                    .accessibilityLabel("Put in \(sink.name)")
                 }
             }
             Button(action: onAdd) {
-                Text("Name a sink")
+                Text("New savings name")
                     .hullText(.body)
                     .foregroundStyle(HullSwatch.accent)
                     .frame(maxWidth: .infinity, minHeight: HullSwatch.tap)

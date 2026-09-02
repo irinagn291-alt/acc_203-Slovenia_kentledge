@@ -10,18 +10,20 @@ final class LoadPlate: UIView {
 
     private var frameModel = PlateFrame.vacant
     private let rivetLayer = CAShapeLayer()
-    private let railLayer = CAShapeLayer()
-    private let railCaption = CATextLayer()
+    private let railBar = UIView()
+    private let railLabel = UILabel()
     private let creditLayer = CAShapeLayer()
     private let creditCaption = CATextLayer()
+    private let scroller = UIScrollView()
+    private let stack = UIView()
+    private let mixChart = LoadMixChartView()
     private var postButtons: [UUID: BrickPostButton] = [:]
     private var postRects: [UUID: CGRect] = [:]
     private var berthButtons: [UUID: UIButton] = [:]
     private var berthByKey: [UUID: CreditBerth] = [:]
     private var berthRects: [CreditBerth: CGRect] = [:]
     private var dragID: UUID?
-    private var dragPoint: CGPoint?
-    private var didLift = false
+    private var platePan: UIPanGestureRecognizer!
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -33,32 +35,53 @@ final class LoadPlate: UIView {
         setContentHuggingPriority(.defaultLow, for: .vertical)
         setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         setContentCompressionResistancePriority(.defaultLow, for: .vertical)
-        rivetLayer.fillColor = HullSwatch.mutedUI.withAlphaComponent(0.35).cgColor
+        rivetLayer.fillColor = HullSwatch.mutedUI.withAlphaComponent(0.22).cgColor
         rivetLayer.zPosition = 0
         layer.addSublayer(rivetLayer)
-        railLayer.fillColor = HullSwatch.inkUI.cgColor
-        railLayer.zPosition = 1
-        layer.addSublayer(railLayer)
-        railCaption.alignmentMode = .center
-        railCaption.truncationMode = .end
-        railCaption.zPosition = 2
-        layer.addSublayer(railCaption)
+
+        railBar.backgroundColor = HullSwatch.inkUI
+        railBar.isUserInteractionEnabled = false
+        addSubview(railBar)
+
+        railLabel.textAlignment = .center
+        railLabel.numberOfLines = 1
+        railLabel.adjustsFontForContentSizeCategory = true
+        railLabel.adjustsFontSizeToFitWidth = true
+        railLabel.minimumScaleFactor = 0.75
+        railLabel.font = .systemFont(ofSize: 15, weight: .semibold)
+        railLabel.textColor = HullSwatch.backgroundUI
+        railLabel.backgroundColor = .clear
+        railLabel.isAccessibilityElement = true
+        addSubview(railLabel)
+
         creditLayer.fillColor = HullSwatch.surfaceUI.cgColor
         creditLayer.strokeColor = HullSwatch.inkUI.cgColor
         creditLayer.lineWidth = 2
-        creditLayer.zPosition = 20
+        creditLayer.zPosition = 40
         creditLayer.isHidden = true
         layer.addSublayer(creditLayer)
         creditCaption.alignmentMode = .center
         creditCaption.isWrapped = true
         creditCaption.truncationMode = .end
-        creditCaption.zPosition = 21
+        creditCaption.zPosition = 41
         creditCaption.isHidden = true
         layer.addSublayer(creditCaption)
-        let pan = UIPanGestureRecognizer(target: self, action: #selector(panCredit(_:)))
-        pan.maximumNumberOfTouches = 1
-        pan.minimumNumberOfTouches = 1
-        addGestureRecognizer(pan)
+
+        scroller.alwaysBounceVertical = true
+        scroller.showsVerticalScrollIndicator = true
+        scroller.backgroundColor = .clear
+        scroller.delaysContentTouches = false
+        addSubview(scroller)
+        stack.backgroundColor = .clear
+        scroller.addSubview(stack)
+        stack.addSubview(mixChart)
+
+        platePan = UIPanGestureRecognizer(target: self, action: #selector(panCredit(_:)))
+        platePan.maximumNumberOfTouches = 1
+        platePan.minimumNumberOfTouches = 1
+        platePan.delegate = self
+        addGestureRecognizer(platePan)
+
         registerForTraitChanges(
             [UITraitDisplayScale.self, UITraitPreferredContentSizeCategory.self]
         ) { (plate: LoadPlate, _) in
@@ -97,36 +120,19 @@ final class LoadPlate: UIView {
         let point = gesture.location(in: self)
         switch gesture.state {
         case .began:
-            if frameModel.pendingLoad != nil {
-                dragID = frameModel.pendingBrickID
-                dragPoint = point
-                didLift = true
-                setNeedsLayout()
-                return
-            }
+            // Pending seat uses the buttons only — no floating chip, no drag loop.
+            guard frameModel.pendingLoad == nil else { return }
             guard let id = hitPost(at: point), !isGhost(id) else { return }
             dragID = id
-            dragPoint = point
-            didLift = false
             onPrepare?(id)
-        case .changed:
-            guard dragID != nil else { return }
-            dragPoint = point
-            if !didLift, abs(gesture.translation(in: self).y) > HullSwatch.space(2) {
-                didLift = true
-            }
-            setNeedsLayout()
         case .ended:
             defer { clearDrag() }
             guard frameModel.pendingLoad != nil else { return }
             if let berth = hitBerth(at: point) {
                 onSeat?(berth)
             }
-        case .cancelled:
-            defer { clearDrag() }
-            if frameModel.pendingLoad != nil {
-                onAbandon?()
-            }
+        case .cancelled, .failed:
+            clearDrag()
         default:
             break
         }
@@ -153,86 +159,122 @@ final class LoadPlate: UIView {
 
     private func clearDrag() {
         dragID = nil
-        dragPoint = nil
-        didLift = false
-        setNeedsLayout()
     }
 
     private func rebuild() {
         let bounds = self.bounds
         guard bounds.width > 1, bounds.height > 1 else { return }
         let pad = HullSwatch.space(2)
-        let railHeight = HullSwatch.space(4)
+        let railHeight = HullSwatch.tap
         let pending = frameModel.pendingLoad != nil
         let targets = pending ? frameModel.seatTargets : []
-        let seatRow = HullSwatch.tap + HullSwatch.space(1)
-        let bottomBand = pending
-            ? CGFloat(max(targets.count, 1)) * seatRow + HullSwatch.space(1)
-            : 0
-        let fullPost = max(
-            bounds.height - pad * 2 - railHeight - bottomBand,
-            HullSwatch.tap * 4
-        )
-        let railY = pad + fullPost
+        let gap = HullSwatch.space(1)
+        let row: CGFloat = 72
+
         paintRivets(in: bounds)
-        railLayer.path = UIBezierPath(
-            rect: CGRect(x: pad, y: railY, width: max(bounds.width - pad * 2, 1), height: railHeight)
-        ).cgPath
-        paintCaption(
-            railCaption,
-            string: pending ? "SEAT THE FREED CREDIT" : "THIS MONTH'S CHARGES — JETTISON ONE",
-            rect: CGRect(x: pad, y: railY, width: max(bounds.width - pad * 2, 1), height: railHeight),
-            style: .caption2,
-            color: HullSwatch.backgroundUI,
-            wrapped: false
+        let railRect = CGRect(x: pad, y: pad, width: max(bounds.width - pad * 2, 1), height: railHeight)
+        railBar.frame = railRect
+        if let pending = frameModel.pendingLoad {
+            let money = HullFigures.money(pending, code: frameModel.currencyCode)
+            railLabel.text = "Freed \(money) — tap where it goes"
+        } else {
+            railLabel.text = "Tap a charge to cancel"
+        }
+        railLabel.accessibilityLabel = railLabel.text
+        railLabel.frame = railRect.insetBy(dx: HullSwatch.space(1), dy: 0)
+        // Keep rail above the scroll view so the caption never disappears under it.
+        bringSubviewToFront(railBar)
+        bringSubviewToFront(railLabel)
+
+        let scrollerTop = pad + railHeight + gap
+        scroller.frame = CGRect(
+            x: 0,
+            y: scrollerTop,
+            width: bounds.width,
+            height: max(bounds.height - scrollerTop, 1)
         )
+        scroller.showsVerticalScrollIndicator = true
+        insertSubview(scroller, belowSubview: railBar)
 
         let posts = frameModel.posts
-        let gap = HullSwatch.space(1)
-        let inner = max(bounds.width - pad * 2, HullSwatch.tap)
-        let slot = max(inner / CGFloat(max(posts.count, 1)), HullSwatch.tap)
-        let maxLoad = max(posts.map(\.load).max() ?? 1, 0.01)
-        let minPost = min(fullPost, max(HullSwatch.tap * 4, fullPost * 0.58))
+        let contentWidth = max(bounds.width - pad * 2, HullSwatch.tap)
+        var y: CGFloat = 0
         var nextPosts: [UUID: BrickPostButton] = [:]
         postRects = [:]
-        for (index, post) in posts.enumerated() {
+
+        for post in posts {
             let button = postButtons[post.id] ?? makePostButton()
             button.brickID = post.id
-            let width = max(slot - gap, HullSwatch.tap)
-            let x = pad + CGFloat(index) * slot + (slot - width) / 2
-            let height = minPost + (fullPost - minPost) * CGFloat(post.load / maxLoad)
-            let rect = CGRect(x: x, y: railY - height, width: width, height: height)
-            postRects[post.id] = rect
-            button.frame = rect
+            let rectInStack = CGRect(x: pad, y: y, width: contentWidth, height: row)
+            button.frame = rectInStack
             button.apply(post: post, currencyCode: frameModel.currencyCode)
             let brickID = post.id
             button.accessibilityCustomActions = post.ghosted ? [] : [
-                UIAccessibilityCustomAction(name: "Jettison") { [weak self] _ in
+                UIAccessibilityCustomAction(name: "Cancel") { [weak self] _ in
                     self?.onPrepare?(brickID)
                     return true
                 }
             ]
             button.isHidden = false
             nextPosts[post.id] = button
-            if button.superview == nil {
-                addSubview(button)
+            if button.superview !== stack {
+                button.removeFromSuperview()
+                stack.addSubview(button)
             }
+            postRects[post.id] = button.convert(button.bounds, to: self)
+            y += row + gap
         }
         for (id, button) in postButtons where nextPosts[id] == nil {
             button.removeFromSuperview()
         }
         postButtons = nextPosts
 
-        let bandY = railY + railHeight + HullSwatch.space(1)
+        let berthStart = y + (posts.isEmpty ? 0 : 0)
         rebuildBerths(
             targets: targets,
-            originY: bandY,
+            originY: berthStart,
             width: bounds.width,
             pad: pad,
-            row: seatRow
+            row: HullSwatch.tap + HullSwatch.space(1)
         )
+        var cursor = targets.isEmpty
+            ? berthStart
+            : berthStart + CGFloat(targets.count) * (HullSwatch.tap + HullSwatch.space(1))
+
+        if !pending, !posts.isEmpty, frameModel.monthLoad > 0 {
+            cursor += gap
+            let chartHeight = mixChart.preferredHeight(for: posts.count)
+            mixChart.isHidden = false
+            mixChart.frame = CGRect(x: pad, y: cursor, width: contentWidth, height: chartHeight)
+            mixChart.apply(
+                posts: posts,
+                monthLoad: frameModel.monthLoad,
+                saved: frameModel.cancelSavings,
+                currencyCode: frameModel.currencyCode
+            )
+            cursor = mixChart.frame.maxY
+        } else {
+            mixChart.isHidden = true
+            mixChart.frame = .zero
+        }
+
+        let contentHeight = cursor + pad
+        stack.frame = CGRect(x: 0, y: 0, width: bounds.width, height: contentHeight)
+        scroller.contentSize = CGSize(width: bounds.width, height: contentHeight)
+
+        for (id, button) in postButtons {
+            postRects[id] = button.convert(button.bounds, to: self)
+        }
+        for (key, button) in berthButtons {
+            if let berth = berthByKey[key] {
+                berthRects[berth] = button.convert(button.bounds, to: self)
+            }
+        }
+
         rebuildCredit(in: bounds)
         refreshAccess()
+        bringSubviewToFront(railBar)
+        bringSubviewToFront(railLabel)
     }
 
     private func paintRivets(in bounds: CGRect) {
@@ -273,19 +315,22 @@ final class LoadPlate: UIView {
             button.frame = rect
             button.isHidden = false
             button.isEnabled = true
-            let prefix = item.2 ? "Seat on sink" : "Seat on keep"
+            let title = item.2
+                ? "Put in \(item.1)"
+                : "Keep \(item.1) instead"
             styleFillButton(
                 button,
-                title: "\(prefix) \(item.1)",
+                title: title,
                 detail: nil,
                 accent: !item.2
             )
-            berthRects[item.0] = rect
+            if button.superview !== stack {
+                button.removeFromSuperview()
+                stack.addSubview(button)
+            }
+            berthRects[item.0] = button.convert(button.bounds, to: self)
             berthByKey[key] = item.0
             next[key] = button
-            if button.superview == nil {
-                addSubview(button)
-            }
         }
         for (id, button) in berthButtons where next[id] == nil {
             button.removeFromSuperview()
@@ -294,38 +339,18 @@ final class LoadPlate: UIView {
     }
 
     private func rebuildCredit(in bounds: CGRect) {
-        guard let pending = frameModel.pendingLoad else {
-            creditLayer.isHidden = true
-            creditCaption.isHidden = true
-            creditLayer.path = nil
-            return
-        }
-        creditLayer.isHidden = false
-        creditCaption.isHidden = false
-        let size = HullSwatch.space(10)
-        let fallback: CGPoint
-        if let ghost = frameModel.pendingBrickID, let rect = postRects[ghost] {
-            fallback = CGPoint(x: rect.midX, y: max(rect.minY + size, size))
-        } else {
-            fallback = CGPoint(x: bounds.midX, y: bounds.height * 0.22)
-        }
-        let origin = dragPoint ?? fallback
-        let rect = CGRect(x: origin.x - size / 2, y: origin.y - size / 2, width: size, height: size)
-        creditLayer.path = UIBezierPath(ovalIn: rect).cgPath
-        let money = HullFigures.money(pending, code: frameModel.currencyCode)
-        paintCaption(
-            creditCaption,
-            string: "\(money)\nLOOSE",
-            rect: rect.insetBy(dx: 6, dy: 10),
-            style: .caption1,
-            color: HullSwatch.inkUI
-        )
+        // Freed amount lives on the rail + seat buttons. No floating chip (it blocked hits and froze layout).
+        _ = bounds
+        creditLayer.isHidden = true
+        creditCaption.isHidden = true
+        creditLayer.path = nil
     }
 
     private func makePostButton() -> BrickPostButton {
         let button = BrickPostButton(type: .custom)
         let pan = UIPanGestureRecognizer(target: self, action: #selector(panCredit(_:)))
         pan.maximumNumberOfTouches = 1
+        pan.delegate = self
         let tap = UITapGestureRecognizer(target: self, action: #selector(postTapped(_:)))
         tap.require(toFail: pan)
         let hold = UILongPressGestureRecognizer(target: self, action: #selector(postHeld(_:)))
@@ -339,7 +364,7 @@ final class LoadPlate: UIView {
     private func makeBerthButton(key: UUID) -> UIButton {
         let button = UIButton(type: .custom)
         button.accessibilityIdentifier = key.uuidString
-        styleFillButton(button, title: "Seat", detail: nil, accent: true)
+        styleFillButton(button, title: "Put here", detail: nil, accent: true)
         button.addTarget(self, action: #selector(seatTapped(_:)), for: .touchUpInside)
         return button
     }
@@ -355,7 +380,7 @@ final class LoadPlate: UIView {
         config.baseForegroundColor = HullSwatch.inkUI
         config.title = title
         config.subtitle = detail
-        config.titleAlignment = .center
+        config.titleAlignment = .leading
         config.titleLineBreakMode = .byTruncatingTail
         config.subtitleLineBreakMode = .byTruncatingTail
         config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { incoming in
@@ -375,6 +400,7 @@ final class LoadPlate: UIView {
         button.layer.borderWidth = accent ? 0 : 1.5
         button.layer.borderColor = HullSwatch.inkUI.cgColor
         button.layer.cornerRadius = 0
+        button.contentHorizontalAlignment = .leading
     }
 
     private func paintCaption(
@@ -437,14 +463,122 @@ final class LoadPlate: UIView {
         for button in berthButtons.values {
             elements.append(button)
         }
-        if !creditLayer.isHidden, let pending = frameModel.pendingLoad {
-            let element = UIAccessibilityElement(accessibilityContainer: self)
-            element.accessibilityFrameInContainerSpace = creditLayer.path?.boundingBox ?? .zero
-            element.accessibilityLabel = "Pending credit \(HullFigures.money(pending, code: frameModel.currencyCode))"
-            element.accessibilityHint = "Seat it on a keep or a named sink"
-            elements.append(element)
+        if let pending = frameModel.pendingLoad {
+            railLabel.accessibilityLabel = "Freed \(HullFigures.money(pending, code: frameModel.currencyCode)). Tap Keep or Put in below."
         }
         accessibilityElements = elements
+    }
+}
+
+extension LoadPlate: UIGestureRecognizerDelegate {
+    func gestureRecognizer(
+        _ gestureRecognizer: UIGestureRecognizer,
+        shouldRecognizeSimultaneouslyWith other: UIGestureRecognizer
+    ) -> Bool {
+        other.view is UIScrollView || other.view?.isDescendant(of: scroller) == true
+    }
+}
+
+private extension UIFont {
+    func withWeight(_ weight: UIFont.Weight) -> UIFont {
+        let descriptor = fontDescriptor.addingAttributes([
+            .traits: [UIFontDescriptor.TraitKey.weight: weight]
+        ])
+        return UIFont(descriptor: descriptor, size: pointSize)
+    }
+}
+
+/// Role: Beam. UIKit mix chart under the charge list. Fills the former empty void.
+private final class LoadMixChartView: UIView {
+    private let titleLabel = UILabel()
+    private let barHost = UIView()
+    private var rowLabels: [UILabel] = []
+    private var barLayers: [CALayer] = []
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        backgroundColor = HullSwatch.surfaceUI
+        titleLabel.text = "Share of this month"
+        titleLabel.font = UIFont.preferredFont(forTextStyle: .caption1).withWeight(.semibold)
+        titleLabel.textColor = HullSwatch.mutedUI
+        titleLabel.adjustsFontForContentSizeCategory = true
+        addSubview(titleLabel)
+        barHost.backgroundColor = HullSwatch.backgroundUI
+        addSubview(barHost)
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        return nil
+    }
+
+    func preferredHeight(for postCount: Int) -> CGFloat {
+        let rows = min(max(postCount, 1), 5)
+        return 24 + 20 + CGFloat(rows) * 28 + 16
+    }
+
+    func apply(
+        posts: [PlatePost],
+        monthLoad: Double,
+        saved: Double,
+        currencyCode: String
+    ) {
+        _ = saved
+        let slices = BeamMath.loadSlices(from: posts.map { ($0.id, $0.name, $0.load) })
+        let palette: [UIColor] = [
+            HullSwatch.accentUI,
+            HullSwatch.inkUI.withAlphaComponent(0.75),
+            HullSwatch.mutedUI,
+            HullSwatch.accentUI.withAlphaComponent(0.55),
+            HullSwatch.inkUI.withAlphaComponent(0.4),
+        ]
+
+        barLayers.forEach { $0.removeFromSuperlayer() }
+        barLayers = []
+        rowLabels.forEach { $0.removeFromSuperview() }
+        rowLabels = []
+
+        let inset: CGFloat = 12
+        let width = max(bounds.width - inset * 2, 1)
+        titleLabel.frame = CGRect(x: inset, y: 10, width: width, height: 18)
+        barHost.frame = CGRect(x: inset, y: 34, width: width, height: 16)
+
+        var x: CGFloat = 0
+        for (index, slice) in slices.enumerated() {
+            let w = max(2, width * CGFloat(slice.share))
+            let layer = CALayer()
+            layer.backgroundColor = palette[index % palette.count].cgColor
+            layer.frame = CGRect(x: x, y: 0, width: w, height: 16)
+            barHost.layer.addSublayer(layer)
+            barLayers.append(layer)
+            x += w
+
+            if index < 5 {
+                let row = UILabel()
+                row.adjustsFontForContentSizeCategory = true
+                row.adjustsFontSizeToFitWidth = true
+                row.minimumScaleFactor = 0.8
+                row.numberOfLines = 1
+                row.font = UIFont.preferredFont(forTextStyle: .footnote)
+                row.textColor = HullSwatch.inkUI
+                row.text = "\(slice.name)  \(HullFigures.percent(slice.share))  \(HullFigures.money(slice.load, code: currencyCode))"
+                let rowY = barHost.frame.maxY + 8 + CGFloat(index) * 28
+                row.frame = CGRect(x: inset, y: rowY, width: width, height: 24)
+                addSubview(row)
+                rowLabels.append(row)
+            }
+        }
+
+        accessibilityLabel = slices
+            .map { "\($0.name) \(HullFigures.percent($0.share))" }
+            .joined(separator: ", ")
+        isAccessibilityElement = true
+        setNeedsLayout()
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        // Frames are set in apply; re-apply if bounds changed with last posts via parent rebuild.
     }
 }
 
@@ -461,20 +595,41 @@ private final class BrickPostButton: UIButton {
         isPointerInteractionEnabled = true
         layer.insertSublayer(plateLayer, at: 0)
         plateLayer.lineWidth = 1.5
-        for label in [nameLabel, loadLabel, verbLabel] {
-            label.textAlignment = .center
-            label.adjustsFontForContentSizeCategory = true
-            label.adjustsFontSizeToFitWidth = true
-            label.minimumScaleFactor = 0.6
-            label.textColor = HullSwatch.inkUI
-            label.numberOfLines = 2
-            label.isUserInteractionEnabled = false
-            addSubview(label)
-        }
+        nameLabel.adjustsFontForContentSizeCategory = true
+        nameLabel.adjustsFontSizeToFitWidth = true
+        nameLabel.minimumScaleFactor = 0.8
+        nameLabel.textColor = HullSwatch.inkUI
+        nameLabel.isUserInteractionEnabled = false
         nameLabel.font = UIFont.preferredFont(forTextStyle: .headline)
-        loadLabel.font = UIFont.preferredFont(forTextStyle: .title2)
+        nameLabel.numberOfLines = 1
+        nameLabel.lineBreakMode = .byTruncatingTail
+        nameLabel.textAlignment = .left
+
+        loadLabel.adjustsFontForContentSizeCategory = true
+        loadLabel.adjustsFontSizeToFitWidth = true
+        loadLabel.minimumScaleFactor = 0.8
+        loadLabel.textColor = HullSwatch.inkUI
+        loadLabel.isUserInteractionEnabled = false
+        loadLabel.font = UIFont.monospacedDigitSystemFont(
+            ofSize: UIFont.preferredFont(forTextStyle: .headline).pointSize,
+            weight: .semibold
+        )
+        loadLabel.numberOfLines = 1
+        loadLabel.textAlignment = .right
+
+        verbLabel.adjustsFontForContentSizeCategory = true
+        verbLabel.adjustsFontSizeToFitWidth = true
+        verbLabel.minimumScaleFactor = 0.8
+        verbLabel.textColor = HullSwatch.inkUI.withAlphaComponent(0.85)
+        verbLabel.isUserInteractionEnabled = false
         verbLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
         verbLabel.numberOfLines = 1
+        verbLabel.lineBreakMode = .byTruncatingTail
+        verbLabel.textAlignment = .left
+
+        addSubview(nameLabel)
+        addSubview(loadLabel)
+        addSubview(verbLabel)
     }
 
     @available(*, unavailable)
@@ -487,27 +642,29 @@ private final class BrickPostButton: UIButton {
         nameLabel.text = post.name
         loadLabel.text = money
         if post.ghosted {
-            verbLabel.text = "CUTTING"
-            plateLayer.fillColor = HullSwatch.surfaceUI.withAlphaComponent(0.4).cgColor
+            verbLabel.text = "Canceling — put the money somewhere"
+            plateLayer.fillColor = HullSwatch.surfaceUI.withAlphaComponent(0.45).cgColor
             plateLayer.strokeColor = HullSwatch.mutedUI.cgColor
             plateLayer.lineDashPattern = [4, 3]
             plateLayer.lineWidth = 1.5
             isEnabled = false
         } else {
-            verbLabel.text = "JETTISON"
+            verbLabel.text = post.mystery
+                ? "\(post.detail) · check date"
+                : post.detail
             plateLayer.fillColor = HullSwatch.accentUI.cgColor
             plateLayer.strokeColor = HullSwatch.inkUI.cgColor
             plateLayer.lineDashPattern = nil
             plateLayer.lineWidth = post.mystery ? 3 : 1.5
             isEnabled = true
         }
-        var label = "Charge \(post.name), monthly \(money)"
-        if post.ghosted { label += ", ghosted" }
-        if post.mystery { label += ", mystery charge" }
+        var label = "\(post.name), \(money) a month, \(post.detail)"
+        if post.ghosted { label += ", canceling" }
+        if post.mystery { label += ", check the date" }
         accessibilityLabel = label
         accessibilityHint = post.ghosted
-            ? "This brick is cut. Seat the freed credit."
-            : "Jettison this charge, then seat the credit"
+            ? "Put the freed money on another charge or a savings name."
+            : "Cancel this charge, then put the freed money somewhere."
         accessibilityTraits = .button
         setNeedsLayout()
     }
@@ -518,23 +675,22 @@ private final class BrickPostButton: UIButton {
         let path = UIBezierPath(rect: bounds)
         rivets(in: bounds).forEach { path.append($0) }
         plateLayer.path = path.cgPath
-        let inset = HullSwatch.space(1)
-        let body = bounds.insetBy(dx: inset, dy: inset)
-        let nameH = max(body.height * 0.26, HullSwatch.space(4))
-        let loadH = max(body.height * 0.30, HullSwatch.space(4))
-        let verbH = max(HullSwatch.space(4), UIFont.preferredFont(forTextStyle: .caption1).pointSize + 8)
-        nameLabel.frame = CGRect(x: body.minX, y: body.minY, width: body.width, height: nameH)
-        loadLabel.frame = CGRect(
-            x: body.minX,
-            y: body.minY + nameH,
-            width: body.width,
-            height: loadH
-        )
+
+        let insetX = HullSwatch.space(2)
+        let insetY = HullSwatch.space(1) + 2
+        let body = bounds.insetBy(dx: insetX, dy: insetY)
+        let lineH = UIFont.preferredFont(forTextStyle: .headline).lineHeight
+        let captionH = UIFont.preferredFont(forTextStyle: .caption1).lineHeight
+        let loadW = min(max(body.width * 0.36, 72), 128)
+        let nameW = max(body.width - loadW - HullSwatch.space(1), 48)
+
+        nameLabel.frame = CGRect(x: body.minX, y: body.minY, width: nameW, height: lineH)
+        loadLabel.frame = CGRect(x: body.maxX - loadW, y: body.minY, width: loadW, height: lineH)
         verbLabel.frame = CGRect(
             x: body.minX,
-            y: body.maxY - verbH,
+            y: min(body.minY + lineH + 4, body.maxY - captionH),
             width: body.width,
-            height: verbH
+            height: captionH
         )
     }
 

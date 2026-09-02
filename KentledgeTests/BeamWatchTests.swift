@@ -127,6 +127,7 @@ final class ScreenFactoryTests: XCTestCase {
     func test_mainScreensConstructWithNoArguments() {
         _ = LedgerView()
         _ = InsightsView()
+        _ = CutsView()
         _ = SettingsView()
         _ = OnboardingView()
         _ = SeatCreditView()

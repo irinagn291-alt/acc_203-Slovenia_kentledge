@@ -233,28 +233,28 @@ final class BeamWatch: ObservableObject {
         } catch let fault as BeamFault {
             self.fault = Self.copy(fault)
         } catch {
-            self.fault = "The beam could not complete that cut."
+            self.fault = "Something went wrong. Try again."
         }
     }
 
     private static func copy(_ fault: BeamFault) -> String {
         switch fault {
         case .unknownBrick:
-            "That brick is not on the beam."
+            "That charge is not on the list."
         case .alreadyPrepared:
-            "A credit is already waiting to seat."
+            "Finish placing the freed money, or undo the cancel."
         case .noPendingCredit:
-            "There is no credit to seat."
+            "Nothing is free to place yet. Cancel a charge first."
         case .emptyName:
-            "Name the brick before it can stand."
+            "Give it a name before saving."
         case .nonPositiveAmount:
             "Amount must be greater than zero."
         case .unknownKeep:
-            "That keep is no longer on the beam."
+            "That charge is no longer on the list."
         case .unknownSink:
-            "That sink is not named."
+            "That savings name is gone."
         case .cannotSeatOnGhost:
-            "A credit cannot seat on its own ghost."
+            "Put the money on a different charge, not the one you canceled."
         }
     }
 }

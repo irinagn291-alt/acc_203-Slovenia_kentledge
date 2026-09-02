@@ -4,7 +4,7 @@ import Foundation
 enum BeamKey {
     static let snapshot = "ktl.beam.v1"
     static let backup = "ktl.beam.v1.backup"
-    static let demo = "ktl.demo.v1"
+    static let demo = "ktl.demo.v2"
 }
 
 /// Role: Beam. Recoverable load outcome. Never crash on a corrupt snapshot.

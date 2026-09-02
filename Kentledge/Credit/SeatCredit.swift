@@ -4,6 +4,7 @@ import Foundation
 struct SeatCredit: Identifiable, Equatable, Sendable {
     var id: UUID
     var brickID: UUID
+    var title: String
     var monthlyEquivalent: Double
     var berth: CreditBerth?
 

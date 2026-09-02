@@ -5,6 +5,7 @@ struct PlatePost: Sendable, Equatable, Identifiable {
     var id: UUID
     var name: String
     var load: Double
+    var detail: String
     var ghosted: Bool
     var mystery: Bool
 }
@@ -78,6 +79,11 @@ enum PlatePlot {
                 id: brick.id,
                 name: brick.name,
                 load: brick.monthlyEquivalent,
+                detail: BeamMath.periodLine(
+                    period: brick.period,
+                    nextChargeDay: brick.nextChargeDay,
+                    calendar: calendar
+                ),
                 ghosted: beam.pendingCut?.brickID == brick.id,
                 mystery: mystery.contains(brick.id)
             )

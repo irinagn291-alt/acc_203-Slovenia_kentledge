@@ -19,4 +19,13 @@ enum ChargePeriod: String, Codable, Sendable, CaseIterable {
             1.0 / 12.0
         }
     }
+
+    var shortLabel: String {
+        switch self {
+        case .weekly: "Week"
+        case .monthly: "Month"
+        case .quarterly: "Quarter"
+        case .yearly: "Year"
+        }
+    }
 }

@@ -47,8 +47,16 @@ struct LoadBeam: Equatable, Sendable {
         bricks.reduce(0) { $0 + $1.monthlyEquivalent }
     }
 
+    var yearlyLoad: Double {
+        monthlyLoad * 12
+    }
+
     var cancelSavings: Double {
         seatedCredits.reduce(0) { $0 + $1.monthlyEquivalent }
+    }
+
+    var cancelSavingsYear: Double {
+        cancelSavings * 12
     }
 
     var keeps: [Keep] {
@@ -131,6 +139,7 @@ struct LoadBeam: Equatable, Sendable {
         next.pendingCut = SeatCredit(
             id: UUID(),
             brickID: brick.id,
+            title: brick.name,
             monthlyEquivalent: brick.monthlyEquivalent,
             berth: nil
         )

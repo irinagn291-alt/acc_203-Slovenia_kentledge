@@ -17,26 +17,26 @@ struct OnboardingView: View {
                 case 0:
                     pageView(
                         image: "ktl_Onboarding1",
-                        title: "This month's load",
-                        line: "The beam holds charge bricks for the month that actually bills. Nothing is smeared across the year."
+                        title: "See this month’s bill",
+                        line: "Name each charge and when it hits. The total is only for months that actually bill — not a smeared year."
                     )
                 case 1:
                     pageView(
                         image: "ktl_Onboarding2",
-                        title: "Jettison a brick",
-                        line: "Drag a post off the beam. It ghosts. A credit equal to the monthly load appears."
+                        title: "Cancel has a cost of honesty",
+                        line: "Tap a charge to cancel it. The monthly amount becomes free money you must place somewhere."
                     )
                 case 2:
                     pageView(
                         image: "ktl_Onboarding3",
-                        title: "A cut must seat",
-                        line: "Land the credit on a remaining keep or a named sink. Only then the load drops."
+                        title: "Put the money somewhere",
+                        line: "Keep another charge, or name a savings bucket. Only then the monthly total drops."
                     )
                 default:
                     pageView(
                         image: "ktl_TwistHero",
-                        title: "Cancel-savings on the beam",
-                        line: "Seated credit is the savings. There is no canceled list. Insights ranks what is still standing."
+                        title: "Saved by cutting",
+                        line: "Money you placed after a cancel is your savings. What if I cut… ranks what you still pay."
                     )
                 }
             }
@@ -49,7 +49,7 @@ struct OnboardingView: View {
                     onFinish(false)
                 }
             } label: {
-                Text(page < 3 ? "Next" : "Open the beam")
+                Text(page < 3 ? "Next" : "Show my charges")
                     .hullText(.body)
                     .foregroundStyle(HullSwatch.ink)
                     .frame(maxWidth: .infinity, minHeight: HullSwatch.tap)

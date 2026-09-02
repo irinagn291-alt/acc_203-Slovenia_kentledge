@@ -8,12 +8,14 @@ struct LedgerView: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var showInsights = false
     @State private var showSettings = false
+    @State private var showCuts = false
     @State private var showOnboarding = false
     @State private var showSinkName = false
     @State private var sinkName = ""
     @State private var dayStamp = Calendar.current.startOfDay(for: Date())
     @State private var showSuccess = false
     @State private var successTask: Task<Void, Never>?
+    @State private var showShare = false
 
     init(watch: BeamWatch, handlesLaunch: Bool = true) {
         self.watch = watch
@@ -77,16 +79,24 @@ struct LedgerView: View {
             .presentationDetents([.large])
             .presentationBackground(HullSwatch.background)
         }
-        .alert("Name a sink", isPresented: $showSinkName) {
-            TextField("Sink", text: $sinkName)
-            Button("Stand") {
+        .sheet(isPresented: $showCuts) {
+            CutsView(watch: watch, onClose: { showCuts = false })
+                .presentationDetents([.large])
+                .presentationBackground(HullSwatch.background)
+        }
+        .sheet(isPresented: $showShare) {
+            HullShareSheet(text: shareText)
+        }
+        .alert("Name a savings bucket", isPresented: $showSinkName) {
+            TextField("e.g. Emergency fund", text: $sinkName)
+            Button("Save") {
                 let name = sinkName.trimmingCharacters(in: .whitespacesAndNewlines)
                 if !name.isEmpty {
                     Task { await watch.saveSink(NamedSink(name: name)) }
                 }
                 sinkName = ""
             }
-            Button("Hold", role: .cancel) { sinkName = "" }
+            Button("Cancel", role: .cancel) { sinkName = "" }
         }
     }
 
@@ -113,9 +123,9 @@ struct LedgerView: View {
             } else if watch.beam.bricks.isEmpty, watch.beam.seatedCredits.isEmpty, watch.beam.pendingCut == nil, !watch.isAdding, watch.expandingBrickID == nil {
                 HullVacancy(
                     image: "ktl_EmptyHome",
-                    headline: "No subscriptions yet.",
-                    line: "Add one to see the monthly load.",
-                    actionTitle: "Stand a brick"
+                    headline: "No charges yet",
+                    line: "Add a named monthly charge to see this month’s load.",
+                    actionTitle: "Add a charge"
                 ) {
                     watch.beginAdd()
                 }
@@ -140,63 +150,67 @@ struct LedgerView: View {
 
     private var header: some View {
         VStack(alignment: .leading, spacing: HullSwatch.space(1)) {
-            HStack(alignment: .firstTextBaseline, spacing: HullSwatch.space(1)) {
-                VStack(alignment: .leading, spacing: 0) {
-                    Text("Monthly load")
+            HStack(alignment: .top, spacing: HullSwatch.space(2)) {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("This month")
                         .hullText(.stencil)
                         .lineLimit(1)
-                        .minimumScaleFactor(0.6)
                     Text(HullFigures.money(watch.plate.monthLoad, code: watch.plate.currencyCode))
-                        .hullText(.load)
+                        .font(HullStep.title.font.monospacedDigit())
+                        .foregroundStyle(HullSwatch.ink)
                         .lineLimit(1)
-                        .minimumScaleFactor(0.6)
+                        .minimumScaleFactor(0.7)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
-                VStack(alignment: .trailing, spacing: 0) {
-                    Text("Cancel-savings")
+                VStack(alignment: .trailing, spacing: 4) {
+                    Text("Saved by cutting")
                         .hullText(.stencil)
                         .lineLimit(1)
-                        .minimumScaleFactor(0.6)
                     Text(HullFigures.money(watch.plate.cancelSavings, code: watch.plate.currencyCode))
-                        .hullText(.title)
-                        .monospacedDigit()
+                        .font(HullStep.title.font.monospacedDigit())
+                        .foregroundStyle(HullSwatch.ink)
                         .lineLimit(1)
-                        .minimumScaleFactor(0.6)
+                        .minimumScaleFactor(0.7)
                 }
                 .frame(maxWidth: .infinity, alignment: .trailing)
             }
             .id(dayStamp)
             Text(jobLine)
-                .hullText(.body)
+                .font(HullStep.body.font)
+                .foregroundStyle(HullSwatch.ink)
                 .lineLimit(2)
-                .minimumScaleFactor(0.6)
+                .fixedSize(horizontal: false, vertical: true)
             HStack(spacing: HullSwatch.space(1)) {
-                HullChromeButton(title: "Insights", fillsWidth: true) { showInsights = true }
+                HullChromeButton(title: "Cuts", fillsWidth: true) { showCuts = true }
+                HullChromeButton(title: "What if…", fillsWidth: true) { showInsights = true }
                 HullChromeButton(title: "Settings", fillsWidth: true) { showSettings = true }
             }
         }
         .padding(.horizontal, HullSwatch.space(2))
-        .padding(.top, HullSwatch.space(1))
-        .padding(.bottom, HullSwatch.space(1))
-        .background {
-            Image("ktl_HeaderDecor")
-                .resizable()
-                .scaledToFill()
-                .opacity(0.28)
-                .allowsHitTesting(false)
-                .accessibilityHidden(true)
-        }
-        .clipped()
+        .padding(.top, HullSwatch.space(2))
+        .padding(.bottom, HullSwatch.space(2))
+        .background(HullSwatch.surface.opacity(0.55))
+    }
+
+    private var shareText: String {
+        BeamMath.shareSummary(
+            monthLoad: watch.beam.monthlyLoad,
+            yearLoad: watch.beam.yearlyLoad,
+            savedMonth: watch.beam.cancelSavings,
+            chargeCount: watch.beam.bricks.count,
+            cutCount: watch.beam.seatedCredits.count,
+            currencyCode: watch.plate.currencyCode
+        )
     }
 
     private var jobLine: String {
         if watch.beam.pendingCut != nil {
-            return "Seat the loose credit on a keep or a named sink."
+            return "You freed money — put it on another charge you keep, or name a savings bucket."
         }
         if let post = watch.plate.leadingCut {
-            return "This month's charges. Jettison \(post.name), then seat the credit."
+            return "Tap \(post.name) to cancel it, then say where the money goes."
         }
-        return "This month's charges stand on the beam."
+        return "Named charges for this month. Cancel one only if you put the money somewhere."
     }
 
     private var populated: some View {
@@ -256,26 +270,40 @@ struct LedgerView: View {
         VStack(spacing: HullSwatch.space(1)) {
             if let post = watch.plate.leadingCut {
                 HullFillButton(
-                    title: "Jettison \(post.name)",
-                    detail: "Then seat \(HullFigures.money(post.load, code: watch.plate.currencyCode)) on a keep or sink",
+                    title: "Cancel \(post.name)",
+                    detail: "Frees \(HullFigures.money(post.load, code: watch.plate.currencyCode)) — then pick where it goes",
                     enabled: !watch.isHauling
                 ) {
                     Task { await watch.prepare(brickID: post.id) }
                 }
             }
-            Button {
-                watch.beginAdd()
-            } label: {
-                Text("Stand a brick")
-                    .hullText(.body)
-                    .foregroundStyle(HullSwatch.ink)
-                    .frame(maxWidth: .infinity, minHeight: HullSwatch.tap)
-                    .background(HullSwatch.surface)
-                    .contentShape(Rectangle())
+            HStack(spacing: HullSwatch.space(1)) {
+                Button {
+                    watch.beginAdd()
+                } label: {
+                    Text("Add a charge")
+                        .font(HullStep.body.font)
+                        .foregroundStyle(HullSwatch.ink)
+                        .frame(maxWidth: .infinity, minHeight: HullSwatch.tap)
+                        .background(HullSwatch.surface)
+                        .contentShape(Rectangle())
+                }
+                .buttonStyle(.plain)
+                .disabled(watch.isHauling)
+                .accessibilityLabel("Add a charge")
+                Button {
+                    showShare = true
+                } label: {
+                    Text("Share")
+                        .font(HullStep.body.font)
+                        .foregroundStyle(HullSwatch.ink)
+                        .frame(maxWidth: .infinity, minHeight: HullSwatch.tap)
+                        .background(HullSwatch.surface)
+                        .contentShape(Rectangle())
+                }
+                .buttonStyle(.plain)
+                .accessibilityLabel("Share this month")
             }
-            .buttonStyle(.plain)
-            .disabled(watch.isHauling)
-            .accessibilityLabel("Stand a brick")
         }
         .padding(.horizontal, HullSwatch.space(2))
         .padding(.bottom, HullSwatch.space(2))
@@ -283,10 +311,10 @@ struct LedgerView: View {
 
     private var pendingBar: some View {
         HStack(spacing: HullSwatch.space(1)) {
-            HullChromeButton(title: "Abandon", fillsWidth: true) {
+            HullChromeButton(title: "Undo cancel", fillsWidth: true) {
                 Task { await watch.abandon() }
             }
-            HullChromeButton(title: "Name a sink", fillsWidth: true) {
+            HullChromeButton(title: "New savings name", fillsWidth: true) {
                 showSinkName = true
             }
         }

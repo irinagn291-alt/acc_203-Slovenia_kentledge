@@ -31,7 +31,7 @@ struct BrickDraft: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: HullSwatch.space(1)) {
-            Text(brick == nil ? "Stand a brick" : "True the post")
+            Text(brick == nil ? "Add a charge" : "Edit charge")
                 .hullText(.stencil)
             TextField("Name", text: $name)
                 .hullText(.body)
@@ -68,9 +68,9 @@ struct BrickDraft: View {
                 .hullText(.body)
                 .frame(minHeight: HullSwatch.tap)
             HStack(spacing: HullSwatch.space(1)) {
-                HullChromeButton(title: "Hold", action: onCancel)
+                HullChromeButton(title: "Cancel", action: onCancel)
                 Button(action: commit) {
-                    Text("Stand")
+                    Text(brick == nil ? "Add" : "Save")
                         .hullText(.body)
                         .foregroundStyle(HullSwatch.ink)
                         .frame(maxWidth: .infinity, minHeight: HullSwatch.tap)
@@ -79,7 +79,7 @@ struct BrickDraft: View {
                 }
                 .buttonStyle(.plain)
                 .disabled(!canStand)
-                .accessibilityLabel("Stand the brick")
+                .accessibilityLabel(brick == nil ? "Add charge" : "Save charge")
             }
         }
         .padding(HullSwatch.space(2))

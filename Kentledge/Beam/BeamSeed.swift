@@ -1,6 +1,6 @@
 import Foundation
 
-/// Role: Beam. Simulator demo load. Device never writes this. Key: ktl.demo.v1.
+/// Role: Beam. Simulator demo load. Device never writes this. Key: ktl.demo.v2.
 enum BeamSeed {
     static let weeklyID = uuid("11111111-1111-4111-8111-111111111111")
     static let monthlyID = uuid("22222222-2222-4222-8222-222222222222")
@@ -30,26 +30,26 @@ enum BeamSeed {
     static func beam() -> LoadBeam {
         let weekly = ChargeBrick(
             id: weeklyID,
-            name: "Chain sling",
+            name: "Streaming",
             amount: 9.99,
             period: .weekly,
             nextChargeDay: chargeDay(year: 2026, month: 8, day: 4)
         )
         let monthly = ChargeBrick(
             id: monthlyID,
-            name: "Hull plate",
+            name: "Gym pass",
             amount: 14,
             period: .monthly,
             nextChargeDay: chargeDay(year: 2026, month: 8, day: 12)
         )
         let yearly = ChargeBrick(
             id: yearlyID,
-            name: "Dry-dock berth",
+            name: "Cloud backup",
             amount: 120,
             period: .yearly,
             nextChargeDay: chargeDay(year: 2026, month: 8, day: 20)
         )
-        let sink = NamedSink(id: sinkID, name: "Plate locker")
+        let sink = NamedSink(id: sinkID, name: "Emergency fund")
         var ballast = BeamBallast.vacant
         ballast.onboardingComplete = true
         return LoadBeam(

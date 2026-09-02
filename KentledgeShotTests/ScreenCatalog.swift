@@ -7,6 +7,7 @@ enum ScreenCatalog {
         [
             ("ledger", AnyView(LedgerView())),
             ("insights", AnyView(InsightsView())),
+            ("cuts", AnyView(CutsView())),
             ("settings", AnyView(SettingsView()))
         ]
     }

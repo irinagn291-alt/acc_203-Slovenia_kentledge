@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 /// Role: Beam. Full-hit chrome. The label is the target; never the glyph alone.
 struct HullChromeButton: View {
@@ -9,14 +10,16 @@ struct HullChromeButton: View {
     var body: some View {
         Button(action: action) {
             Text(title)
-                .hullText(.body)
+                .font(HullStep.body.font)
                 .foregroundStyle(HullSwatch.ink)
+                .lineLimit(1)
+                .minimumScaleFactor(0.85)
+                .multilineTextAlignment(.center)
                 .frame(
-                    minWidth: HullSwatch.tap,
                     maxWidth: fillsWidth ? .infinity : nil,
                     minHeight: HullSwatch.tap
                 )
-                .padding(.horizontal, fillsWidth ? 0 : HullSwatch.space(1))
+                .padding(.horizontal, HullSwatch.space(1))
                 .background(HullSwatch.surface)
                 .contentShape(Rectangle())
         }
@@ -36,22 +39,23 @@ struct HullFillButton: View {
 
     var body: some View {
         Button(action: action) {
-            VStack(spacing: 0) {
+            VStack(spacing: 4) {
                 Text(title)
-                    .hullText(.body)
+                    .font(HullStep.body.font.weight(.semibold))
                     .foregroundStyle(HullSwatch.ink)
-                    .lineLimit(2)
-                    .minimumScaleFactor(0.6)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.85)
                 Text(detail)
-                    .hullText(.caption)
-                    .foregroundStyle(HullSwatch.ink)
+                    .font(HullStep.caption.font)
+                    .foregroundStyle(HullSwatch.ink.opacity(0.9))
                     .lineLimit(2)
-                    .minimumScaleFactor(0.6)
+                    .minimumScaleFactor(0.85)
             }
             .multilineTextAlignment(.center)
-            .padding(.horizontal, HullSwatch.space(1))
-            .padding(.vertical, HullSwatch.space(1))
-            .frame(maxWidth: .infinity, minHeight: HullSwatch.tap)
+            .frame(maxWidth: .infinity)
+            .padding(.horizontal, HullSwatch.space(2))
+            .padding(.vertical, HullSwatch.space(1) + 4)
+            .frame(minHeight: 56)
             .background(enabled ? HullSwatch.accent : HullSwatch.surface)
             .contentShape(Rectangle())
         }
@@ -69,17 +73,18 @@ struct HullSheetBar: View {
     var onClose: () -> Void
 
     var body: some View {
-        HStack(spacing: HullSwatch.space(1)) {
+        HStack(alignment: .center, spacing: HullSwatch.space(1)) {
             Text(title)
                 .hullText(.title)
                 .lineLimit(1)
+                .minimumScaleFactor(0.85)
             Spacer(minLength: HullSwatch.space(1))
             Button(action: onClose) {
                 Text("Close")
-                    .hullText(.body)
+                    .font(HullStep.body.font)
                     .foregroundStyle(HullSwatch.accent)
-                    .padding(.horizontal, HullSwatch.space(1))
                     .frame(minWidth: HullSwatch.tap, minHeight: HullSwatch.tap)
+                    .padding(.horizontal, HullSwatch.space(1))
                     .background(HullSwatch.surface)
                     .contentShape(Rectangle())
             }
@@ -115,7 +120,7 @@ struct HullVacancy: View {
             Spacer(minLength: 0)
             Button(action: action) {
                 Text(actionTitle)
-                    .hullText(.body)
+                    .font(HullStep.body.font)
                     .foregroundStyle(HullSwatch.ink)
                     .frame(maxWidth: .infinity, minHeight: HullSwatch.tap)
                     .background(retry ? HullSwatch.accent : HullSwatch.surface)
@@ -127,4 +132,15 @@ struct HullVacancy: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(HullSwatch.background)
     }
+}
+
+/// Role: Beam. System share sheet for month summary text.
+struct HullShareSheet: UIViewControllerRepresentable {
+    var text: String
+
+    func makeUIViewController(context: Context) -> UIActivityViewController {
+        UIActivityViewController(activityItems: [text], applicationActivities: nil)
+    }
+
+    func updateUIViewController(_ controller: UIActivityViewController, context: Context) {}
 }

@@ -35,8 +35,8 @@ struct SettingsView: View {
             if watch.warning == .startedEmpty, watch.beam.bricks.isEmpty {
                 HullVacancy(
                     image: "ktl_EmptyList",
-                    headline: "Ballast was lost.",
-                    line: "The ledger started empty. Currency and reminder can still be set.",
+                    headline: "Settings were lost",
+                    line: "The ledger started empty. You can still set currency and a reminder.",
                     actionTitle: "Retry",
                     retry: true
                 ) {
@@ -52,18 +52,18 @@ struct SettingsView: View {
         .frame(maxWidth: 560)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .background(HullSwatch.background.ignoresSafeArea())
-        .confirmationDialog("Reset the whole beam?", isPresented: $confirmReset, titleVisibility: .visible) {
+        .confirmationDialog("Erase every charge?", isPresented: $confirmReset, titleVisibility: .visible) {
             Button("Reset all data", role: .destructive) {
                 Task { await watch.resetAll() }
             }
-            Button("Hold", role: .cancel) {}
+            Button("Keep my data", role: .cancel) {}
         }
     }
 
     private var populated: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: HullSwatch.space(2)) {
-                Text("Ballast")
+                Text("Preferences")
                     .hullText(.stencil)
                 TextField("Currency", text: $currency)
                     .hullText(.body)
@@ -87,17 +87,17 @@ struct SettingsView: View {
                     }
                     .frame(minHeight: HullSwatch.tap)
                 }
-                HullChromeButton(title: "Write ballast", fillsWidth: true) {
+                HullChromeButton(title: "Save preferences", fillsWidth: true) {
                     Task { await persistBallast() }
                 }
-                Text("Sinks")
+                Text("Savings buckets")
                     .hullText(.stencil)
-                TextField("Sink name", text: $sinkName)
+                TextField("e.g. Emergency fund", text: $sinkName)
                     .hullText(.body)
                     .padding(.horizontal, HullSwatch.space(1))
                     .frame(minHeight: HullSwatch.tap)
                     .background(HullSwatch.surface)
-                HullChromeButton(title: "Name sink", fillsWidth: true) {
+                HullChromeButton(title: "Add savings name", fillsWidth: true) {
                     let name = sinkName.trimmingCharacters(in: .whitespacesAndNewlines)
                     guard !name.isEmpty else { return }
                     Task {
@@ -141,7 +141,7 @@ struct SettingsView: View {
     private func errorBlock(_ fault: String) -> some View {
         HullVacancy(
             image: "ktl_EmptyList",
-            headline: "Settings could not write.",
+            headline: "Could not save settings.",
             line: fault,
             actionTitle: "Retry",
             retry: true

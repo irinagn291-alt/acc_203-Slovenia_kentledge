@@ -8,10 +8,10 @@ struct KeepRail: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: HullSwatch.space(1)) {
-            Text("Keeps")
+            Text("Keep paying")
                 .hullText(.stencil)
             if keeps.isEmpty {
-                Text(pending ? "No remaining keep. Name a sink." : "Keeps appear after a prepare.")
+                Text(pending ? "No other charge left. Add a savings name." : "Other charges show up after you start a cancel.")
                     .hullText(.caption)
                     .foregroundStyle(HullSwatch.muted)
             } else {
@@ -19,7 +19,7 @@ struct KeepRail: View {
                     Button {
                         onSeat(keep.brickID)
                     } label: {
-                        Text("Seat on keep \(keep.name)")
+                        Text("Keep \(keep.name)")
                             .hullText(.body)
                             .lineLimit(2)
                             .minimumScaleFactor(0.6)
@@ -31,7 +31,7 @@ struct KeepRail: View {
                     }
                     .buttonStyle(.plain)
                     .disabled(!pending)
-                    .accessibilityLabel("Seat on keep \(keep.name)")
+                    .accessibilityLabel("Keep \(keep.name)")
                 }
             }
         }
