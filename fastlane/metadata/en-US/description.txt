@@ -1,13 +1,13 @@
-Kentledge is a personal Ledger for this month's subscription load. Charge bricks for the month that bills stand on the beam; a cut commits only when the freed credit seats on a keep or a named sink.
+Kentledge is a personal ledger for this month’s named charges. Add each bill with a name, amount, and next date; the home list shows the monthly total — not a smeared year.
 
-• Ledger shows Monthly load and Cancel-savings
-• Stand a brick with Name, Amount, Period (None, Week, Month, Quarter, Year), and Next charge
-• True the post to edit a brick on the beam
-• Jettison a brick or drag a post off the beam; it ghosts and a credit equal to the monthly load appears
-• Seat on keep or Seat on sink; Name a sink; Abandon restores the brick
-• A mystery charge mark appears when Period is None or Next charge days collide
-• Insights ranks uncut bricks under What a cut would free
-• Settings Ballast stores Currency and Local reminder, plus Name sink, Re-run onboarding, Reset all data, and Contact Kentledge
-• Charge bricks, seated credits, keeps, sinks, and ballast stay on this device
+• Home shows This month and Saved by cutting, with Cuts / What if… / Settings
+• Add a charge with Name, Amount, Period, and Next charge
+• Each row shows period and next date; tap to cancel, hold to edit
+• Freed money must land on another charge you keep, or a savings name — then the total drops
+• Cuts history lists every seated cut and yearly savings
+• What if I cut… ranks remaining charges, shows next calendar dates, year estimate, and Share
+• Share this month from home or Insights
+• Settings: currency, local reminder, savings names, Contact Kentledge, Re-run onboarding, Reset all data
+• Charges stay on this device
 
-There is no account and no bank login. Seated credit on the beam is the cancel-savings.
+There is no account and no bank login. Saved-by-cutting is the money you placed after a cancel.

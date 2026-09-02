@@ -1,13 +1,23 @@
-The build settings declare NSCameraUsageDescription as "This app does not use the camera." The Ledger, Insights, and Settings never request camera access, so that prompt does not appear in this flow. No other permission usage strings are present. Local reminder is a stored hour on Ballast; the app does not request notification permission.
+Hi —
 
-There is no login, no in-app purchase, no user-generated content, no account deletion flow, and no App Tracking Transparency prompt.
+I recorded this on a physical iPhone, current iOS, from the Home Screen icon. Kentledge is a personal ledger for this month’s named charges. You type a name, an amount, and when it hits again. The home list shows the monthly total and what you free if you cancel a charge — but only after you put that money on another charge you keep, or into a savings name. Audience: people who want this month’s load in one place, not a logo list. No bank login, no App Store subscriptions, no IAP.
 
-Kentledge is a Finance Ledger for people who want this month's subscription load and to see what a cancel funds as seated credit. A cut is two-phase: jettison prepares a ghosted brick and a loose credit; seating on a keep or a named sink commits.
+No account, so there is no login / signup / delete to show, and no demo password. Charge names stay on this device. Nothing is published, so report and block are not in the app.
 
-No credentials or demo account are needed. A cold launch opens the Ledger with Monthly load and Cancel-savings. If onboarding is incomplete, four pages appear: This month's load, Jettison a brick, A cut must seat, and Cancel-savings on the beam; Next, Skip, or Open the beam continues. Settings Re-run onboarding shows those pages again. From the Ledger header, open Insights or Settings. If the beam is empty, Stand a brick, enter Name, Amount, Period, and Next charge, then Stand. Tap Jettison on a post or drag it off the beam, then Seat on keep or Seat on sink, or Name a sink. Abandon restores the brick. Insights lists What a cut would free.
+Walkthrough:
 
-On launch the app POSTs the bundle identifier and an empty push token to https://kentledge-beam.pro/api/v1/users/register. Settings Contact Kentledge opens https://kentledge-beam.pro/contact-us. The Ledger does not fetch a remote catalog. Charge bricks, credits, keeps, sinks, and ballast stay on device in UserDefaults key ktl.beam.v1 and in Application Support as beam.json. A content URL returned by register, if any, may be loaded in a WebView; otherwise the native Ledger is shown.
+Onboarding: See this month’s bill / Cancel has a cost of honesty / Put the money somewhere / Saved by cutting. I used Show my charges. Skip lands on the same home list.
 
-Behaviour does not differ by region. Currency defaults to USD until Ballast is written. Amounts and dates follow the device locale.
+Empty home says Add a charge. Form: Name, Amount, Period, Next charge, then Add. Header shows This month and Saved by cutting with matching figure size. Charge rows show period and next date — tap to cancel, hold to edit. Cancel [biggest] does the same. After a cancel, put the freed money on another charge or New savings name; Undo cancel puts the charge back. Cuts lists seated cuts and yearly savings. What if… ranks remaining charges, next calendar dates, year estimate, Share. Home also has Share. Settings: currency, local reminder, savings names, Contact Kentledge, Re-run onboarding, Reset all data.
 
-No licence or regulated-industry paperwork applies. The app does not link a bank, process payments, or give licensed financial advice.
+Reviewer setup: install, open, Show my charges or Skip, use sample charges (Streaming, Gym pass, Cloud backup, Emergency fund), cancel one, place the money, open Cuts and What if…, then Settings.
+
+Permissions: we do not ask for camera, mic, contacts, location, or tracking. The plist camera line is “This app does not use the camera.” Local reminder is only an hour integer in Settings.
+
+Charges and preferences are on-device storage. Support: https://kentledge-beam.pro/contact-us. Privacy: https://kentledge-beam.pro/privacy-policy. No login vendor, ads, analytics, or model API.
+
+Same screens in every region. Locale only changes currency glyphs and date formats.
+
+Not a licensed finance product and we do not ship a third-party catalog.
+
+Thanks

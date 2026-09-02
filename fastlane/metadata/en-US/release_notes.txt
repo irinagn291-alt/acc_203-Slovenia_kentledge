@@ -1,7 +1,7 @@
 Version 1.0 is the first public release.
 
-The Ledger shows Monthly load and Cancel-savings. Stand a brick to add Name, Amount, Period, and Next charge, or True the post to edit. Jettison a brick to prepare a cut; seat the credit on a keep or a named sink to commit, or Abandon to restore it. Insights ranks What a cut would free. Settings holds Ballast (Currency and Local reminder), sinks, Contact Kentledge, Re-run onboarding, and Reset all data.
+On first launch, four pages cover See this month’s bill, Cancel has a cost of honesty, Put the money somewhere, and Saved by cutting. Skip opens the same home list.
 
-Onboarding pages cover This month's load, Jettison a brick, A cut must seat, and Cancel-savings on the beam.
+Home shows This month and Saved by cutting. Add a charge with Name, Amount, Period and Next charge. Tap a charge to cancel it, then put the freed money on another charge or a savings name. What if I cut… ranks remaining charges. Settings holds currency, reminder, savings names, Contact Kentledge, Re-run onboarding and Reset all data.
 
-Charge bricks and ballast stay on the device.
+Charges stay on this device.

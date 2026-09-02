@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		02084AEC13248DA0D0F8BD87 /* BeamStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12158AE27683B07AF542E761 /* BeamStoreTests.swift */; };
 		040DB93E197E339254324785 /* HullChrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483324DD1BE038591BCC33F3 /* HullChrome.swift */; };
+		0588718214BBA0075D34649A /* CutsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12AE08F19FECAD2116A2BD8 /* CutsView.swift */; };
 		16DE0CB2FCEBAE76B22CE2B9 /* SeatCreditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3CFE62849B92C82BD925E1 /* SeatCreditView.swift */; };
 		185C05A19BFBA807AC63E362 /* ChargePeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B89AF256E5D456713074BE /* ChargePeriod.swift */; };
 		190B49BC0C938DA6ECD9BD90 /* SinkRail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E57D3C4C8683B23CA7A80A8 /* SinkRail.swift */; };
@@ -21,6 +22,7 @@
 		3597DADFCC9624A01EF09746 /* BeamStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125B8C88BB3CAE699F0A4CD6 /* BeamStore.swift */; };
 		3F84FE77F77AB6104FD13BA9 /* InsightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189A9979FF82C192B94C4B68 /* InsightsView.swift */; };
 		536C913B37AE1B083AC15315 /* KentledgeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF966996373A41207FFB13A4 /* KentledgeTests.swift */; };
+		5FF8F6E7E9252003477A7B80 /* BeamMathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BEC7D0775B0A07ED2BD303 /* BeamMathTests.swift */; };
 		64001F7DB3472D3526A9C36B /* BeamSeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91E776CAE5554B9E7FB7C46 /* BeamSeed.swift */; };
 		679881A4815E526CB7DFB260 /* LoadPlate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFA60342E405ED07AB282D0 /* LoadPlate.swift */; };
 		74472464F03A58807A2A8908 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726CCE9F7297DBA42C3F4FEC /* AppDelegate.swift */; };
@@ -36,8 +38,10 @@
 		B4D406083AE7F643216EED4F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1417F7F6CA53160D9EB1F0 /* SettingsView.swift */; };
 		BDF5C6810B7B078064FE05D5 /* ScreenCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35CB73ED248065D1A235BE9 /* ScreenCatalog.swift */; };
 		C3D71D96567D0CD4E5BECA2B /* BeamClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1E304A126145F58D53EC4B /* BeamClientTests.swift */; };
+		C7B25EB32811576CCC31E88F /* BeamMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F83764D3A2216A35B7B3147 /* BeamMath.swift */; };
 		D0F3BA5FCB9F69DCA0C5CEC8 /* LedgerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDBB822B1DF20E3F31FEF3B /* LedgerView.swift */; };
 		D16E3E723815150DD1F42000 /* BeamClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93B9ADDA1C0C690C7C62384 /* BeamClient.swift */; };
+		E0CBB165736A87A65C427437 /* BeamChartPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FC999110CFEF4102A10294 /* BeamChartPanel.swift */; };
 		EBB218EE97A7E95A9D9C3785 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = D1EF1433999D519F87713822 /* Alamofire */; };
 		EBEF8CC1E88B2CC942922AD7 /* PlateFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD7EBE985BB06DDE3CE5FE9 /* PlateFrame.swift */; };
 		F122078194D6AFD93006BC3F /* KentledgeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CBF42E24FBE93AE4D1DA98 /* KentledgeApp.swift */; };
@@ -74,6 +78,7 @@
 		2A1E304A126145F58D53EC4B /* BeamClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeamClientTests.swift; sourceTree = "<group>"; };
 		36CBF42E24FBE93AE4D1DA98 /* KentledgeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KentledgeApp.swift; sourceTree = "<group>"; };
 		3A080A8FFEA8CF7133F8D09E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3F83764D3A2216A35B7B3147 /* BeamMath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeamMath.swift; sourceTree = "<group>"; };
 		408F6E649EB852DDA0A7D2F0 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		46A82D909B5CBA31F5C7877A /* BeamWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeamWatch.swift; sourceTree = "<group>"; };
 		483324DD1BE038591BCC33F3 /* HullChrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HullChrome.swift; sourceTree = "<group>"; };
@@ -96,7 +101,10 @@
 		971AA1B46AA30204CFD4FFD7 /* ChargeBrick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChargeBrick.swift; sourceTree = "<group>"; };
 		9F1417F7F6CA53160D9EB1F0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		A93B9ADDA1C0C690C7C62384 /* BeamClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeamClient.swift; sourceTree = "<group>"; };
+		B12AE08F19FECAD2116A2BD8 /* CutsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutsView.swift; sourceTree = "<group>"; };
 		B35CB73ED248065D1A235BE9 /* ScreenCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenCatalog.swift; sourceTree = "<group>"; };
+		B3BEC7D0775B0A07ED2BD303 /* BeamMathTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeamMathTests.swift; sourceTree = "<group>"; };
+		B4FC999110CFEF4102A10294 /* BeamChartPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeamChartPanel.swift; sourceTree = "<group>"; };
 		BDC8934B11E665D06F1C8204 /* SeatCredit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatCredit.swift; sourceTree = "<group>"; };
 		D5A3BA9FB80368FA7BF4F1C2 /* LoadBeamTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadBeamTests.swift; sourceTree = "<group>"; };
 		D700E7C01A8F1E5EC0684FF7 /* KentledgeShotTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = KentledgeShotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -179,6 +187,7 @@
 		C5514FA7A6D0168833634119 /* Credit */ = {
 			isa = PBXGroup;
 			children = (
+				B12AE08F19FECAD2116A2BD8 /* CutsView.swift */,
 				BDC8934B11E665D06F1C8204 /* SeatCredit.swift */,
 				8D3CFE62849B92C82BD925E1 /* SeatCreditView.swift */,
 			);
@@ -197,8 +206,10 @@
 		E20E03CD72B63284B6D78278 /* Beam */ = {
 			isa = PBXGroup;
 			children = (
+				B4FC999110CFEF4102A10294 /* BeamChartPanel.swift */,
 				A93B9ADDA1C0C690C7C62384 /* BeamClient.swift */,
 				532C4120373A5199C04ACDE2 /* BeamLedger.swift */,
+				3F83764D3A2216A35B7B3147 /* BeamMath.swift */,
 				505D7DF07CF4AF93E5F0FC88 /* BeamReview.swift */,
 				E91E776CAE5554B9E7FB7C46 /* BeamSeed.swift */,
 				125B8C88BB3CAE699F0A4CD6 /* BeamStore.swift */,
@@ -229,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				2A1E304A126145F58D53EC4B /* BeamClientTests.swift */,
+				B3BEC7D0775B0A07ED2BD303 /* BeamMathTests.swift */,
 				12158AE27683B07AF542E761 /* BeamStoreTests.swift */,
 				1D848CEA4EC176A133AEA509 /* BeamWatchTests.swift */,
 				EF966996373A41207FFB13A4 /* KentledgeTests.swift */,
@@ -358,8 +370,10 @@
 			files = (
 				ADCE5173EFAFDB3F584A35B4 /* APIConfig.swift in Sources */,
 				74472464F03A58807A2A8908 /* AppDelegate.swift in Sources */,
+				E0CBB165736A87A65C427437 /* BeamChartPanel.swift in Sources */,
 				D16E3E723815150DD1F42000 /* BeamClient.swift in Sources */,
 				7892F85852FE2C47E16C2F4E /* BeamLedger.swift in Sources */,
+				C7B25EB32811576CCC31E88F /* BeamMath.swift in Sources */,
 				9CCB133DCA72D253300C2ABF /* BeamReview.swift in Sources */,
 				64001F7DB3472D3526A9C36B /* BeamSeed.swift in Sources */,
 				3597DADFCC9624A01EF09746 /* BeamStore.swift in Sources */,
@@ -368,6 +382,7 @@
 				A4A7722DDBF33ADC581F000F /* ChargeBrick.swift in Sources */,
 				185C05A19BFBA807AC63E362 /* ChargePeriod.swift in Sources */,
 				7B6AFF44CB37D3C39FC87EB0 /* ContentView.swift in Sources */,
+				0588718214BBA0075D34649A /* CutsView.swift in Sources */,
 				25CF57895F7AC13C2EA7E886 /* HoldBeam.swift in Sources */,
 				040DB93E197E339254324785 /* HullChrome.swift in Sources */,
 				216F6AD5FB4BD96B8D9A7BF1 /* HullSwatch.swift in Sources */,
@@ -393,6 +408,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3D71D96567D0CD4E5BECA2B /* BeamClientTests.swift in Sources */,
+				5FF8F6E7E9252003477A7B80 /* BeamMathTests.swift in Sources */,
 				02084AEC13248DA0D0F8BD87 /* BeamStoreTests.swift in Sources */,
 				1916ABAB2CE2B8770AE5A95C /* BeamWatchTests.swift in Sources */,
 				536C913B37AE1B083AC15315 /* KentledgeTests.swift in Sources */,
@@ -433,7 +449,7 @@
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Kentledge;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
@@ -598,7 +614,7 @@
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Kentledge;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
